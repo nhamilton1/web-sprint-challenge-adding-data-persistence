@@ -1,9 +1,13 @@
 // build your `Resource` model here
 const db = require('../../data/dbConfig')
 
-const getResources = () => {
+const getResources = async () => {
     return db('resources as r')
-        .select('r.resource_id', 'r.resource_name', 'r.resource_description')
+        .select(
+            'r.resource_id', 
+            'r.resource_name', 
+            'r.resource_description'
+        )
 }
 
 const getById = (resource_id) => {

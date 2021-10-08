@@ -5,5 +5,5 @@ const resources = [
 ]
 
 exports.seed = function(knex) {
-  return knex('resource').insert(resources)
+  return knex('resources').insert(resources)
 };

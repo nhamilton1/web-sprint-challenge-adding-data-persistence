@@ -6,5 +6,5 @@ const tasks = [
 ]
 
 exports.seed = function(knex) {
-  return knex('task').insert(tasks)
+  return knex('tasks').insert(tasks)
 };

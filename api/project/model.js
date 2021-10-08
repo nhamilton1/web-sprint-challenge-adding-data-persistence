@@ -2,17 +2,22 @@
 const db = require('../../data/dbConfig')
 
 const getProjects = () => {
-    return db('project')
+    return db('projects as p')
+        .select(
+            'p.project_name', 
+            'p.project_description', 
+            'p.project_completed'
+        )
 }
 
 const getProjectById = (project_id) => {
-    return db('project')
+    return db('projects')
         .where('project_id', project_id)
         .first()
 }
 
 const createProject = (project) => {
-    return db('project').insert(project)
+    return db('projects').insert(project)
         .then(([project_id]) => {
             return getProjectById(project_id)
         })

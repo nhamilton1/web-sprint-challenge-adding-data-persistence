@@ -2,18 +2,18 @@
 const db = require('../../data/dbConfig')
 
 const getResources = () => {
-    return db('resource as r')
+    return db('resources as r')
         .select('r.resource_id', 'r.resource_name', 'r.resource_description')
 }
 
 const getById = (resource_id) => {
-    return db('resource')
+    return db('resources')
         .where('resource_id', resource_id)
         .first()
 }
 
 const createResource = (resource) => {
-    return db('resource').insert(resource)
+    return db('resources').insert(resource)
         .then(([resource_id]) => {
             return getById(resource_id)
         })

@@ -6,16 +6,21 @@ const getResources = () => {
         .select('r.resource_id', 'r.resource_name', 'r.resource_description')
 }
 
-const addResource = (sauce) => {
-    db('resource').insert(sauce)
-        .then(([sauce_id]) => {
-            return db('resource')
-                .where('resource_id', sauce_id)
-                .first()
+const getById = (resource_id) => {
+    return db('resource')
+        .where('resource_id', resource_id)
+        .first()
+}
+
+const createResource = (resource) => {
+    return db('resource').insert(resource)
+        .then(([resource_id]) => {
+            return getById(resource_id)
         })
 }
 
 module.exports = {
     getResources,
-    addResource
+    createResource,
+    getById
 }
